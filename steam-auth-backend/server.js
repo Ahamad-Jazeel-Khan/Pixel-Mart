@@ -5,6 +5,8 @@ const passport = require("./config/passport");
 const cors = require("cors");
 const helmet = require("helmet");
 require("dotenv").config();
+const tradeRoutes = require("./routes/tradeRoutes");
+
 
 const authRoutes = require("./routes/authRoutes");
 const userRoutes = require("./routes/userRoutes");
@@ -53,7 +55,7 @@ app.use("/auth", authRoutes);
 app.use("/api/user", userRoutes);
 app.use("/api/steam-inventory", inventoryRoutes);
 app.use("/api/price", priceRoutes);
-
+app.use("/api/trade", tradeRoutes);
 
 const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => {
