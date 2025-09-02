@@ -16,6 +16,15 @@ const priceRoutes = require("./routes/priceRoutes");
 const app = express();
 app.set("trust proxy", 1);
 
+
+// Proper CORS configuration
+app.use(cors({
+  origin: 'http://localhost:3000',
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'PATCH'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Cookie', 'x-http-method-override']
+}));
+
 // MongoDB
 mongoose.connect(process.env.MONGO_DB_URI)
   .then(() => console.log("✅ MongoDB connected"))
@@ -23,11 +32,8 @@ mongoose.connect(process.env.MONGO_DB_URI)
 
 // Middleware
 app.use(helmet());
-app.use(cors({
-  origin: process.env.FRONTEND_URL,
-  methods: ["GET", "POST"],
-  credentials: true,
-}));
+
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 

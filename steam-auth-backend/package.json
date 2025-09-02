@@ -20,6 +20,7 @@
     "express-session": "^1.18.1",
     "helmet": "^8.1.0",
     "mongoose": "^8.15.0",
+    "mongoose-paginate-v2": "^1.9.1",
     "node-cache": "^5.1.2",
     "passport": "^0.7.0",
     "passport-steam": "^1.0.18",
